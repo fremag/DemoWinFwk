@@ -11,7 +11,7 @@ namespace DemoWinFwk
         {
         }
 
-        protected override void HandleData(string data)
+        public override void HandleAction(string data)
         {
             Debug.WriteLine(GetType());
         }
@@ -23,22 +23,27 @@ namespace DemoWinFwk
         {
         }
 
-        protected override void HandleData(string data)
+        public override void HandleAction(string data)
         {
             Debug.WriteLine(GetType());
         }
     }
 
-    public class DoubleTypedUiCommands : AbstractTypedUICommand<double>
+    public class DoubleTypedUiCommands : AbstractTypedUICommand<MyDouble>
     {
         public DoubleTypedUiCommands() : base("Double", "Some double", "Data", null)
         {
         }
 
-        protected override void HandleData(double data)
+        public override void HandleAction(MyDouble data)
         {
             Debug.WriteLine(GetType());
         }
+    }
+
+    public class MyDouble
+    {
+        double Data { get; }
     }
 
     public class TotoCommand : AbstractVoidUICommand
