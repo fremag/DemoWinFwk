@@ -11,6 +11,7 @@ namespace DemoWinFwk
             this.Name = "StringModule";
             this.Text = "My String Module";
             this.Summary = "Nothing";
+            textBox1.Text = "Some text";
         }
 
         public string Data => textBox1.Text;

@@ -1,49 +1,51 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Windows.Forms;
 using WinFwk.UICommands;
 using WinFwk.UIModules;
 
 namespace DemoWinFwk
 {
-    public class StringTypedUiCommand : AbstractTypedUICommand<String>
+    public class StringTypedUiCommand : AbstractDataUICommand<string>
     {
         public StringTypedUiCommand() : base("String", "Some string", "Data", null)
         {
         }
 
-        public override void HandleAction(string data)
+        protected override void HandleData(string data)
         {
-            Debug.WriteLine(GetType());
+            MessageBox.Show("String: "+data);
         }
     }
 
-    public class TextTypedUiCommand : AbstractTypedUICommand<String>
+    public class TextTypedUiCommand : AbstractDataUICommand<string>
     {
         public TextTypedUiCommand() : base("Text", "Some text", "Text", null)
         {
         }
 
-        public override void HandleAction(string data)
+        protected override void HandleData(string data)
         {
-            Debug.WriteLine(GetType());
+            MessageBox.Show("Text: " + data);
         }
     }
 
-    public class DoubleTypedUiCommands : AbstractTypedUICommand<MyDouble>
+    public class DoubleTypedUiCommands : AbstractDataUICommand<MyDouble>
     {
         public DoubleTypedUiCommands() : base("Double", "Some double", "Data", null)
         {
         }
 
-        public override void HandleAction(MyDouble data)
+        protected override void HandleData(MyDouble data)
         {
-            Debug.WriteLine(GetType());
+            MessageBox.Show($"{data.GetType()}: {data.Data}");
+
         }
     }
 
     public class MyDouble
     {
-        double Data { get; }
+        public double Data { get; set; }
     }
 
     public class TotoCommand : AbstractVoidUICommand

@@ -3,7 +3,7 @@ using WinFwk.UIModules;
 
 namespace DemoWinFwk
 {
-    public partial class DoubleModule : UIModule, UIDataProvider<double>
+    public partial class DoubleModule : UIModule, UIDataProvider<MyDouble>
     {
         public DoubleModule()
         {
@@ -13,6 +13,6 @@ namespace DemoWinFwk
             this.Summary = "Nothing";
         }
 
-        public double Data => double.Parse(textBox1.Text);
+        public MyDouble Data => new MyDouble { Data = double.Parse(textBox1.Text) };
     }
 }
